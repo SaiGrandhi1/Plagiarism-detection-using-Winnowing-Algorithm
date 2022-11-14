@@ -19,8 +19,7 @@ def kgrams(text, k = 25):
     for i in range(n - k + 1):
         kgram = ''.join(tokenList[i : i + k])
         hv = hash(kgram)
-        kgrams.append((kgram, hv, i, i + k))  #k-gram, its hash value, starting and ending positions are stored
-        #these help in marking the plagiarized content in the original code.
+        kgrams.append((kgram, hv, i, i + k))
     return kgrams
 
 #function that returns the index at which minimum value of a given list (window) is located
@@ -45,9 +44,9 @@ def fingerprints(arr, winSize = 4):
         win = arr[i: i + winSize]  #forming windows
         windows.append(win)
         currMin = i + minIndex(win)
-        if not currMin == prevMin:  #min value of window is stored only if it is not the same as min value of prev window
-            fingerprintList.append(arr[currMin])  #reduces the number of fingerprints while maintaining guarantee
-            prevMin = currMin  #refer to density of winnowing and guarantee threshold (Stanford paper)
+        if not currMin == prevMin:
+            fingerprintList.append(arr[currMin])
+            prevMin = currMin
 
     return fingerprintList
 
